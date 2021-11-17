@@ -1,0 +1,20 @@
+<h1> Sign In </h1>
+
+<%= form_for(@user, url: '/sign_in/check') do |form| %>
+
+  
+  <div class="fields">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div
+
+  <div class="fields">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Sign in" %>
+  </div>
+
+<% end %>
