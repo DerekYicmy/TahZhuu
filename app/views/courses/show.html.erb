@@ -1,0 +1,31 @@
+<h1> <%= @course.name %> </h1>
+
+<%= form_for(@review, url: course_reviews_path(@course)) do |form|%>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <div>
+    <%= form.label :rating %>
+    <%= form.select :rating, [1, 2, 3, 4, 5], include_blank: false, selected: 3 %>
+  </div>
+
+    <div><%= form.submit %></div>
+    
+  <% end %>
+
+  <h2> Course Review </h2>
+  <% @reviews.each do |review| %>
+  <section> 
+    <%= review.rating %>
+  </section>
+  <header><%= review.title %></header>
+  <article><%= review.content %></article>
+
+  <% end %>
+
+  <%= link_to "Course Index", courses_path %> 

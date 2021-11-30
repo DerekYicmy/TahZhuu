@@ -1,4 +1,30 @@
 <h1> courses </h1>
+<!-- <%= link_to "新增課程", new_course_path %> -->
+<%= link_to "登出", sign_out_path, method: "delete"%>
+
+<Table>
+  <thead>
+    <tr>
+      <td>Course Name</td>
+      <td>Price</td>
+      <td>Total hour</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+    <tr>
+      <td><%= link_to course.name, course_path(course.id) %></td>
+      <td><%= course.price %></td>
+      <td><%= course.hour %></td>
+      <td>
+        <%= link_to "edit", edit_course_path(course.id) %>
+        <%= link_to "delete", course_path(course.id), method: "delete", data: {confirm: "please confirm delete"} %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
 
 
-<%= link_to "新增課程", new_course_path %> 
+</Table>
+
+<%= link_to 'Add New Course', new_course_path, method: "get" %>

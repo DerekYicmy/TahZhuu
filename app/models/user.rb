@@ -1,11 +1,15 @@
 require "digest"
 
 class User < ApplicationRecord
+  has_many :courses
   validates :username, presence: true
-  #validates (:username, { presence: true })
   validates :email, presence: true, uniqueness: true 
+  #validates (:username, { presence: true })
   #format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   #ref:https://stackoverflow.com/questions/4776907/what-is-the-best-easy-way-to-validate-an-email-address-in-ruby
+  
+  before_create :encrypt_password
+  #callback method/function 
 
   def self.login(user_info)
     email = user_info[:email]
@@ -17,9 +21,6 @@ class User < ApplicationRecord
   end
 
 
-
-  before_create :encrypt_password
-  #callback method/function 
 
   private
   def encrypt_password
