@@ -1,3 +1,29 @@
 // Place all the styles related to the courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.favorited {
+  background-color: blue;
+  color: white;
+}
+h1 {
+
+}
+section.course {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  border: 2px solid rgb(143, 143, 143);
+  border-radius: 5px;
+  background-color: rgb(237, 237, 237);
+  font-size: 14pt;
+  text-decoration: none;
+  padding: 10px;
+  
+  table {
+    background-color: rgb(238, 238, 238);
+  }
+
+    header {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }

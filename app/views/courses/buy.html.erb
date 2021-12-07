@@ -1,0 +1,20 @@
+<h1> Buy Course</h1>
+
+<%= form_for(@order, url: course_orders_path(@course)) do |form|%>
+<div data-controller="payment" data-payment-token-value="<%= @token %>">
+  <div data-payment-target="dropin"></div>
+  <input type="hidden", name="nonce", data-payment-target="nonce" />
+
+</div>
+  <div>
+    <%= form.label :recipient %>
+    <%= form.text_field :recipient %>
+  </div>
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div><%= form.submit %></div>
+    
+<% end %>

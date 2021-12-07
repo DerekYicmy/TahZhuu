@@ -1,7 +1,7 @@
 <h1> Home </h1> 
 
-<% if session[:ursess] %>
-  Login Success!
+<% if user_signed_in? %>
+  Login Success!<a href="/sign_out">Sign Out</a>
 <% else %>
  <a href="/sign_in">Please Log In</a>
 <% end %>

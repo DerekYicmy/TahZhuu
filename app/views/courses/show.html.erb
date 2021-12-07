@@ -1,6 +1,16 @@
-<h1> <%= @course.name %> </h1>
 
-<%= form_for(@review, url: course_reviews_path(@course)) do |form|%>
+<h1 data-controller="favorite"><%= @course.name %> 
+  <%if user_signed_in? && current_user.favorite_courses.include?(@course) %>
+  <button data-favorite-target="btn"
+          data-action="click->favorite#like" id="like-btn" class="favorited" data-id="<%= @course.id %>" >LIKE</button>
+  <% else%>
+  <button data-favorite-target="btn" data-action="click->favorite#like" id="like-btn" data-id="<%= @course.id %>" >LIKE</button>
+  <% end %>
+</h1>
+
+<button><%= link_to "Buy Course", buy_course_path(@course) %></button>
+ 
+<%= form_for(@review, url: course_reviews_path(@course), remote:true) do |form|%>
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -11,7 +21,7 @@
   </div>
   <div>
     <%= form.label :rating %>
-    <%= form.select :rating, [1, 2, 3, 4, 5], include_blank: false, selected: 3 %>
+    <%= form.select :rating, [1, 2, 3, 4, 5], include_blank: true, selected: 3 %>
   </div>
 
     <div><%= form.submit %></div>
@@ -29,3 +39,11 @@
   <% end %>
 
   <%= link_to "Course Index", courses_path %> 
+
+
+  <!--<%if user_signed_in? && current_user.favorite_courses.include?(@course) %>
+  <button data-favorite-target="btn"
+          data-action="click->favorite#like" id="like-btn" class="favorited" data-id="<%= @course.id %>" >LIKE</button>
+  <% else%>
+  <button data-favorite-target="btn" data-action="click->favorite#like" id="like-btn" data-id="<%= @course.id %>" >LIKE</button>
+  <% end %>--!>

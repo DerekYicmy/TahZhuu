@@ -33,7 +33,6 @@ class UsersController < ApplicationController
     else
       render html: "No User"
     end
-
   end
   private
   def user_params

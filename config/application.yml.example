@@ -1,0 +1,3 @@
+braintree_merchant_id: 'YOUR KEY'
+braintree_public_key:  'YOUR KEY'
+braintree_private_key: 'YOUR KEY'

@@ -15,9 +15,24 @@ Rails.application.routes.draw do
   
   #resources :courses
   resources :courses do
+    member do
+      get :buy
+  end
+    resources :orders, only: [:create] #POST /courses/2/orders <-- route
     #resources :reviews, shallow:true 
     resources :reviews, only: [:create]
   end
   resources :reviews, only: [:destroy]
 
+  
+  
+  namespace :api do
+    namespace :v1 do
+        resources :courses, only: [] do
+          member do
+            post :like
+          end
+        end
+    end
+  end
 end

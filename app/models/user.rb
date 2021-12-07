@@ -1,7 +1,10 @@
 require "digest"
 
 class User < ApplicationRecord
+  has_many :orders
   has_many :courses
+  has_many :favor_courses
+  has_many :favorite_courses, source: :course, through: :favor_courses
   validates :username, presence: true
   validates :email, presence: true, uniqueness: true 
   #validates (:username, { presence: true })
